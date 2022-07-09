@@ -9,9 +9,9 @@ class Controller:
         for item in globals():
             if item.endswith("Layer"):
                 layer_cls = globals()[item]
-                self.layers[layer_cls.id] = layer_cls(self.surface)
+                self.layers[layer_cls.id] = layer_cls(self.surface, self.set_layer)
 
-    def change_layer(self, new_id):
+    def set_layer(self, new_id):
         self.cur_layer = new_id
 
     def main_loop(self):

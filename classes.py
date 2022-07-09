@@ -5,7 +5,6 @@ import json
 
 pygame.font.init()
 
-
 class PygameObject:
     def __init__(self, width, height, pos_x, pos_y, surface) -> None:
         self.size = (width, height)
@@ -43,10 +42,11 @@ class Text(Display):
     cached_fonts = {}
     @staticmethod
     def get_font(fontsize):
+        this_dir = Path(__file__).parent
         if fontsize in Text.cached_fonts:
             return Text.cached_fonts[fontsize]
         else:
-            font = pygame.font.Font("NovaSquare-Regular.ttf", fontsize)
+            font = pygame.font.Font(this_dir / "NovaSquare-Regular.ttf", fontsize)
             Text.cached_fonts[fontsize] = font
             return font
 
