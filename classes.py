@@ -46,7 +46,7 @@ class Text(Display):
         if fontsize in Text.cached_fonts:
             return Text.cached_fonts[fontsize]
         else:
-            font = pygame.font.Font(this_dir / "NovaSquare-Regular.ttf", fontsize)
+            font = pygame.font.Font(this_dir / "fonts" / "NovaSquare-Regular.ttf", fontsize)
             Text.cached_fonts[fontsize] = font
             return font
 
@@ -161,7 +161,7 @@ class Entry(PygameObject):
                             pygame.scrap.put(SCRAP_TEXT, self.text.encode())
                             self.text = ""
 
-                elif event.unicode and len(self.text) < self.maxchars:
+                elif event.unicode and len(self.text) < self.maxchars and event.key != K_BACKSPACE:
                     self.text += event.unicode
 
 
