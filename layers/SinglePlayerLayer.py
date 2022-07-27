@@ -21,18 +21,30 @@ class SinglePlayerLayer(BaseLayer):
             if event.type == pygame.KEYDOWN:
 
                 if event.key == K_RIGHT and self.valid_move(self.hero.x + 1, self.hero.y):
-                    self.hero.x += 1
-                    self.map.move(-1)
+                    i = 1
+                    while (self.valid_move(self.hero.x + i + 1, self.hero.y)):
+                        i+=1
+                    self.hero.x += i
+                    self.map.move(-i)
 
                 if event.key == K_LEFT and self.valid_move(self.hero.x - 1, self.hero.y):
-                    self.hero.x -= 1
-                    self.map.move(1)
+                    i = 1
+                    while (self.valid_move(self.hero.x - i - 1, self.hero.y)):
+                        i+=1
+                    self.hero.x -= i
+                    self.map.move(i)
 
                 if event.key == K_DOWN and self.valid_move(self.hero.x, self.hero.y + 1):
-                    self.hero.move(1)
+                    i = 1
+                    while (self.valid_move(self.hero.x, self.hero.y + i + 1)):
+                        i+=1
+                    self.hero.move(i)
 
                 if event.key == K_UP and self.valid_move(self.hero.x, self.hero.y - 1):
-                    self.hero.move(-1)
+                    i = 1
+                    while (self.valid_move(self.hero.x, self.hero.y - i - 1)):
+                        i+=1
+                    self.hero.move(-i)
 
     def valid_move(self, hero_x, hero_y):
         if hero_x < 0 or hero_y < 0:
@@ -52,4 +64,4 @@ class SinglePlayerLayer(BaseLayer):
         self.map.get_blocks(blocks_args)
         self.map.fill_surface()
 
-        self.hero = Hero(2, 5, self.map.size, self.map.x, self.map.y)
+        self.hero = Hero(5, 5, self.map.size, self.map.x, self.map.y)

@@ -6,9 +6,8 @@ class Map:
         """give width / height as 3 / 1"""
         self.x = x
         self.y = y
-        self.size = height / 10
+        self.size= height / 10
         self.image = pygame.Surface((width, height))
-        self.image.fill((40, 40, 40))
         self.rect = self.image.get_rect(topleft = (self.x, self.y))
         self.cur_pos = 0
         self.blocks = {}
@@ -31,10 +30,10 @@ class Map:
             self.level_surface.blit(self.blocks[block].image, self.blocks[block].rect)
 
     def draw(self, surface: pygame.Surface):
+        self.image.fill((100,100,100))
         self.image.blit(self.level_surface, (self.size * self.cur_pos, 0))
         surface.blit(self.image, self.rect)
 
     def move(self, move):
-        print(self.cur_pos + 30, "<", self.finish)
         if abs(self.cur_pos) + 30 <= self.finish:
             self.cur_pos += move

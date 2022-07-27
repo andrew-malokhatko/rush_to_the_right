@@ -8,7 +8,7 @@ class Map:
         self.y = y
         self.size = height / 10
         self.image = pygame.Surface((width, height))
-        self.image.fill((40, 40, 40))
+        self.image.fill((100, 100, 100))
         self.rect = self.image.get_rect(topleft = (self.x, self.y))
         self.cur_pos = 0
         self.blocks = {}
@@ -26,7 +26,7 @@ class Map:
                     block = self.blocks[i, k]
                     self.blocks[i, k] = Block(block.id, (i - self.cur_pos) * self.size, k * self.size, self.size)
                 else:
-                    self.blocks[i, k] = Block(0, (i - self.cur_pos) * self.size, k * self.size, self.size)
+                    self.blocks[i, k] = Block(1, (i - self.cur_pos) * self.size, k * self.size, self.size)
 
     def draw(self, surface:pygame.Surface):
         for i in range(self.cur_pos, (self.cur_pos + 30)):

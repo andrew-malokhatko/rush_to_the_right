@@ -17,6 +17,9 @@ class Editor:
             data = f.read(6)
             map_args = []
 
+            if len(data) == 0:
+                return None
+
             while len(data) == 6:
                  x, y, id = struct.unpack("hhh", data)
                  map_args.append(tBlock(x, y, id))
