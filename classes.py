@@ -50,7 +50,7 @@ class Text(Display):
             Text.cached_fonts[fontsize] = font
             return font
 
-    def __init__(self, fontsize, text: str, bgcolor = None, fgcolor = (255,255,25)) -> None:
+    def __init__(self, fontsize, text: str, bgcolor = None, fgcolor = (255,255,255)) -> None:
         self.font = Text.get_font(fontsize)
         self.bg = bgcolor
         text = self.font.render(text, True, fgcolor, bgcolor)

@@ -6,7 +6,10 @@ def create_map():
             f.write(struct.pack("h", 0))
             for i in range(30):
                 for k in range(10):
-                    data = struct.pack("hhh", i, k, 0)
+                    if k%2 ==0:
+                        data = struct.pack("hhh", i, k, 0)
+                    else:
+                        data = struct.pack("hhh", i, k, 1)
                     f.write(data)
 
 create_map()

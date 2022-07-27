@@ -1,17 +1,22 @@
 import pygame
+from collections import namedtuple
+from game.blocks import blocks
+
+tBlock = namedtuple("Block", "x y id")
 
 class Block():
-    def __init__(self, id, x, y):
-        self.size = 30   # block size to change
+    def __init__(self, id, x, y, size):
+        self.size = size   # block size to change
         self.id = id
-        self.colors = {
-            0: (255, 255, 255),
-            1: (100, 100, 100)
-        }
-        self.color = self.colors[id]
+        self.x = x
+        self.color = blocks[id]
         self.image = pygame.Surface((self.size, self.size))
-        self.image.fill(self.colors[id])
-        self.rect = self.image.get_rect(center = (self.size * x + 200, self.size * y + 200))
+        self.image.fill(self.color)
+        self.rect = self.image.get_rect(topleft = (x, y))
 
     def draw(self, surface: pygame.Surface):
         surface.blit(self.image, self.rect)
+
+    def set_color(self):
+        self.color = blocks[self.id]
+        self.image.fill(self.color)
